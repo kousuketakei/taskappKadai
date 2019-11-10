@@ -20,6 +20,9 @@ import RealmSwift
     
     dynamic var date = Date()
     
+    //TaskクラスにcategoryというStringプロパティを追加する
+    dynamic var category = ""
+    
     /**
     　idをプライマリーキーとして設定
      */
