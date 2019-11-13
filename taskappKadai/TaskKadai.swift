@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-@objcMembers class Task: Object {
+@objcMembers class TaskKadai: Object {
     //管理用 ID。プライマリーキー
     dynamic var id = 0
     
