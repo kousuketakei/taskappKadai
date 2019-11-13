@@ -1,0 +1,6 @@
+framework module Pods_taskappKadai {
+  umbrella header "Pods-taskappKadai-umbrella.h"
+
+  export *
+  module * { export * }
+}
