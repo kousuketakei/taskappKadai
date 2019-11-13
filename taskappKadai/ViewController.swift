@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //DB内のタスクが格納されるリスト
     //日付近い順\順でソート：降順
     //以降内容をアップデートするとリスト内は自動的に更新される。
-    var taskArray = try!Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+    var taskArray = try!Realm().objects(TaskKadai.self).sorted(byKeyPath: "date", ascending: false)
     
     
     override func viewDidLoad() {
@@ -78,10 +78,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             inputViewController.task = taskArray[indexPath!.row]
             
         } else {
-            let task = Task()
+            let task = TaskKadai()
             task.date = Date()
             
-            let allTasks = realm.objects(Task.self)
+            let allTasks = realm.objects(TaskKadai.self)
             if allTasks.count != 0 {
                 task.id = allTasks.max(ofProperty: "id")! + 1            }
             inputViewController.task = task

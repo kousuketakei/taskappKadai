@@ -13,8 +13,11 @@ class inputViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var categoryTextField: UITextField!
     
-    var task: Task!
+    
+   
+    var task: TaskKadai!
     var realm = try! Realm()
     
     
