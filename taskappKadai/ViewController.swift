@@ -12,6 +12,7 @@ import RealmSwift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     //Realmインスタンスを取得する
     let realm = try! Realm()
@@ -40,9 +41,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Cellに値を設定する。
         let task = taskArray[indexPath.row]
         //カスタムクラスに変更
-        let categoryLabel1 = cell.viewWithTag(1) as! UILabel
-        let categoryLabel2 = cell.viewWithTag(2) as! UILabel
-        let categoryLabel3 = cell.viewWithTag(3) as! UILabel
+        let categoryLabel1 = cell.viewWithTag(2) as! UILabel
+        let categoryLabel2 = cell.viewWithTag(3) as! UILabel
+        let categoryLabel3 = cell.viewWithTag(4) as! UILabel
         
         
         
