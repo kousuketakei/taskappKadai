@@ -12,6 +12,7 @@ import RealmSwift
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     //Realmインスタンスを取得する
     let realm = try! Realm()
@@ -19,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //DB内のタスクが格納されるリスト
     //日付近い順\順でソート：降順
     //以降内容をアップデートするとリスト内は自動的に更新される。
-    var taskArray = try!Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
+    var taskArray = try!Realm().objects(TaskKadai.self).sorted(byKeyPath: "date", ascending: false)
     
     
     override func viewDidLoad() {
@@ -39,13 +40,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         //Cellに値を設定する。
         let task = taskArray[indexPath.row]
-        cell.textLabel?.text = task.title
+        //カスタムクラスに変更
+        let categoryLabel1 = cell.viewWithTag(2) as! UILabel
+        let categoryLabel2 = cell.viewWithTag(3) as! UILabel
+        let categoryLabel3 = cell.viewWithTag(4) as! UILabel
+        
+        
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyy-MM-dd HH:mm"
         
         let dateString: String = formatter.string(from: task.date)
-        cell.detailTextLabel?.text = dateString
         
         return cell
     }
@@ -78,10 +83,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             inputViewController.task = taskArray[indexPath!.row]
             
         } else {
-            let task = Task()
+            let task = TaskKadai()
             task.date = Date()
             
-            let allTasks = realm.objects(Task.self)
+            let allTasks = realm.objects(TaskKadai.self)
             if allTasks.count != 0 {
                 task.id = allTasks.max(ofProperty: "id")! + 1            }
             inputViewController.task = task
